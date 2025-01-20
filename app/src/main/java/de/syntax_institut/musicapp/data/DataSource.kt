@@ -7,6 +7,18 @@ val songList = listOf(
     Song("The Beatles", "Hey Jude", 431, R.drawable.user_pic),
     Song("Queen", "Bohemian Rhapsody", 354, R.drawable.user_pic),
     Song("Michael Jackson", "Thriller", 357, R.drawable.user_pic),
+    Song("Adele", "Rolling in the Deep", 228, R.drawable.user_pic),
+    Song("The Beatles", "Hey Jude", 431, R.drawable.user_pic),
+    Song("Queen", "Bohemian Rhapsody", 354, R.drawable.user_pic),
+    Song("Michael Jackson", "Thriller", 357, R.drawable.user_pic),
+    Song("Adele", "Rolling in the Deep", 228, R.drawable.user_pic),
+    Song("The Beatles", "Hey Jude", 431, R.drawable.user_pic),
+    Song("Queen", "Bohemian Rhapsody", 354, R.drawable.user_pic),
+    Song("Michael Jackson", "Thriller", 357, R.drawable.user_pic),
+    Song("Adele", "Rolling in the Deep", 228, R.drawable.user_pic),
+    Song("The Beatles", "Hey Jude", 431, R.drawable.user_pic),
+    Song("Queen", "Bohemian Rhapsody", 354, R.drawable.user_pic),
+    Song("Michael Jackson", "Thriller", 357, R.drawable.user_pic),
     Song("Adele", "Rolling in the Deep", 228, R.drawable.user_pic)
 )
 
