@@ -1,0 +1,92 @@
+package de.syntax_institut.musicapp.components
+
+import android.R.attr.maxLines
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Card
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import de.syntax_institut.musicapp.R
+import de.syntax_institut.musicapp.data.Song
+import de.syntax_institut.musicapp.ui.theme.MusicAppTheme
+
+
+@Composable
+fun SongGridItem(song: Song) { // Akzeptiert jetzt ein einzelnes Song-Objekt
+
+    Card(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(8.dp)
+    ) {
+        Column(
+            modifier = Modifier.padding(8.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+
+        ) {
+            Image(
+                painter = painterResource(id = song.image),
+                contentDescription = null,
+                modifier = Modifier.size(100.dp),
+
+                alignment = Alignment.TopCenter
+
+            )
+            Spacer(modifier = Modifier.height(8.dp)) // Abstand zwischen Bild und Text
+Column {
+            Text(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .align(Alignment.CenterHorizontally),
+                text = song.artist, // Nutzt den Titel des Songs
+                style = MaterialTheme.typography.titleMedium,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                textAlign = TextAlign.Center
+            )
+
+            Text(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .align(Alignment.CenterHorizontally),
+                text = song.title,
+                style = MaterialTheme.typography.titleSmall,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                textAlign = TextAlign.Center
+            )
+}
+        }
+    }
+}
+
+@Preview
+@Composable
+fun PreviewGridItem() {
+    MusicAppTheme {
+        val sampleSong = Song(
+            artist = "The Beatles",
+            title = "Hey Jude sssssssssss",
+            duration = 431,
+            image = R.drawable.user_pic,
+            length = 432
+        )
+        SongGridItem(song = sampleSong)
+    }
+}
