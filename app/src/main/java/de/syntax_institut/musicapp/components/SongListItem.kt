@@ -1,9 +1,11 @@
 package de.syntax_institut.musicapp.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -28,34 +30,39 @@ import de.syntax_institut.musicapp.ui.theme.MusicAppTheme
 
 @Composable
 fun SongListItem(song: Song) {
-    Card(
+    Box(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(8.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+            .fillMaxSize()
+            .padding(horizontal = 16.dp)
     ) {
-        Row(
-            modifier = Modifier.padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp),
+            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
         ) {
-            Image(
-                painter = painterResource(id = song.image),
-                contentDescription = null,
-                modifier = Modifier.size(64.dp),
-                contentScale = ContentScale.Crop
+            Row(
+                modifier = Modifier.padding(16.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Image(
+                    painter = painterResource(id = song.image),
+                    contentDescription = null,
+                    modifier = Modifier.size(64.dp),
+                    contentScale = ContentScale.Crop
 
-            )
-            Spacer(modifier = Modifier.width(16.dp))
-            Column {
-                Text(text = song.title, style = MaterialTheme.typography.titleMedium)
-                Text(text = song.artist, style = MaterialTheme.typography.bodyMedium)
-                Text(text = song.formattedLength, style = MaterialTheme.typography.bodySmall)
+                )
+                Spacer(modifier = Modifier.width(16.dp))
+                Column {
+                    Text(text = song.title, style = MaterialTheme.typography.titleMedium)
+                    Text(text = song.artist, style = MaterialTheme.typography.bodyMedium)
+                    Text(text = song.formattedLength, style = MaterialTheme.typography.bodySmall)
+                }
             }
         }
     }
 }
-
-@Preview
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun PreviewSongItem() {
     MusicAppTheme {

@@ -1,6 +1,6 @@
 package de.syntax_institut.musicapp.components
 
-import android.R.attr.maxLines
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -27,12 +28,13 @@ import de.syntax_institut.musicapp.ui.theme.MusicAppTheme
 
 
 @Composable
-fun SongGridItem(song: Song) { // Akzeptiert jetzt ein einzelnes Song-Objekt
-
+fun SongGridItem(song: Song) {
     Card(
         modifier = Modifier
             .fillMaxSize()
-            .padding(8.dp)
+            .padding(8.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+
     ) {
         Column(
             modifier = Modifier.padding(8.dp),
@@ -44,39 +46,38 @@ fun SongGridItem(song: Song) { // Akzeptiert jetzt ein einzelnes Song-Objekt
                 painter = painterResource(id = song.image),
                 contentDescription = null,
                 modifier = Modifier.size(100.dp),
-
                 alignment = Alignment.TopCenter
 
             )
-            Spacer(modifier = Modifier.height(8.dp)) // Abstand zwischen Bild und Text
-Column {
-            Text(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .align(Alignment.CenterHorizontally),
-                text = song.artist, // Nutzt den Titel des Songs
-                style = MaterialTheme.typography.titleMedium,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-                textAlign = TextAlign.Center
-            )
 
-            Text(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .align(Alignment.CenterHorizontally),
-                text = song.title,
-                style = MaterialTheme.typography.titleSmall,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-                textAlign = TextAlign.Center
-            )
-}
+            Column {
+                Text(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .align(Alignment.CenterHorizontally),
+                    text = song.artist,
+                    style = MaterialTheme.typography.titleMedium,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    textAlign = TextAlign.Center
+                )
+
+                Text(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .align(Alignment.CenterHorizontally),
+                    text = song.title,
+                    style = MaterialTheme.typography.titleSmall,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    textAlign = TextAlign.Center
+                )
+            }
         }
     }
 }
 
-@Preview
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun PreviewGridItem() {
     MusicAppTheme {
