@@ -4,10 +4,10 @@ import de.syntax_institut.musicapp.R
 
 
 val songList = listOf(
-    Song("The Beatles", "Hey Jude", 431, R.drawable.user_pic, 431),
-    Song("Queen", "Bohemian Rhapsody", 354, R.drawable.user_pic, 431),
-    Song("Michael Jackson", "Thriller", 357, R.drawable.user_pic, 431),
-    Song("Adele", "Rolling in the Deep", 228, R.drawable.user_pic, 431)
+    Song("The Beatles", "Hey Jude", 431, R.drawable.user_pic),
+    Song("Queen", "Bohemian Rhapsody", 354, R.drawable.user_pic),
+    Song("Michael Jackson", "Thriller", 357, R.drawable.user_pic),
+    Song("Adele", "Rolling in the Deep", 228, R.drawable.user_pic)
 )
 
 val Song.formattedLength: String

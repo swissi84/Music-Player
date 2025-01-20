@@ -84,9 +84,8 @@ fun PreviewGridItem() {
         val sampleSong = Song(
             artist = "The Beatles",
             title = "Hey Jude sssssssssss",
-            duration = 431,
             image = R.drawable.user_pic,
-            length = 432
+            length = 432,
         )
         SongGridItem(song = sampleSong)
     }

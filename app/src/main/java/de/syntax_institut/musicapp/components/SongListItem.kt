@@ -22,7 +22,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.syntax_institut.musicapp.R
-import de.syntax_institut.musicapp.SongList
 import de.syntax_institut.musicapp.data.Song
 import de.syntax_institut.musicapp.data.formattedLength
 import de.syntax_institut.musicapp.ui.theme.MusicAppTheme
@@ -67,7 +66,7 @@ fun SongListItem(song: Song) {
 fun PreviewSongItem() {
     MusicAppTheme {
         val sampleSongs = listOf(
-            Song("The Beatles", "Hey Jude", 431, R.drawable.user_pic, 431),
+            Song("The Beatles", "Hey Jude", 431, R.drawable.user_pic),
         )
         val paddingValues = 16.dp
         SongList(songs = sampleSongs, modifier = Modifier.padding(paddingValues))
