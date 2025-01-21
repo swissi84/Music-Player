@@ -3,7 +3,9 @@ package de.syntax_institut.musicapp
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.GridOn
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -16,19 +18,25 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import de.syntax_institut.musicapp.components.SongGrid
 import de.syntax_institut.musicapp.components.SongList
 import de.syntax_institut.musicapp.data.songList
 import de.syntax_institut.musicapp.ui.theme.MusicAppTheme
-
+import kotlinx.serialization.Serializable
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FirstScreen(modifier: Modifier = Modifier) {
-    var isListView by remember { mutableStateOf(true) }
+fun FirstScreen(
+    onNavigateToProfilScreen: () -> Unit,
+    modifier: Modifier = Modifier,
+    ) {
+
+    var isListView by rememberSaveable  { mutableStateOf(true) }
 
     Scaffold(
         topBar = {
@@ -43,6 +51,18 @@ fun FirstScreen(modifier: Modifier = Modifier) {
                             contentDescription = description
                         )
                     }
+
+                    IconButton(
+                     modifier = Modifier
+                         .padding(horizontal = 16.dp),
+                        onClick = { onNavigateToProfilScreen() })
+                    {
+                        Icon(
+                            imageVector = Icons.Default.AccountBox,
+                            contentDescription = "ProfilScreen"
+                        )
+                    }
+
                 }
             )
         }
@@ -71,6 +91,8 @@ fun FirstScreen(modifier: Modifier = Modifier) {
 @Composable
 fun MusicAppPreview() {
     MusicAppTheme {
-        FirstScreen()
+        FirstScreen(
+            onNavigateToProfilScreen = {},
+            )
     }
 }

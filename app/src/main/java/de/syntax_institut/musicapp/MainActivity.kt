@@ -5,8 +5,22 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.key.Key.Companion.Home
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import de.syntax_institut.musicapp.ui.theme.MusicAppTheme
+import kotlinx.serialization.Serializable
 
 @OptIn(ExperimentalMaterial3Api::class)
 class MainActivity : ComponentActivity() {
@@ -16,9 +30,42 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MusicAppTheme {
-                FirstScreen()
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+
+                    val navController = rememberNavController()
+                    var followers by rememberSaveable { mutableStateOf(245) }
+
+                    NavHost(
+                        navController = navController,
+                        startDestination = FirstScreen,
+                        modifier = Modifier.padding(innerPadding)
+                    ) {
+                        composable<FirstScreen> {
+                           FirstScreen(
+                               onNavigateToProfilScreen = {
+                                   navController.navigate(ProfilScreen)
+                               },
+
+                           )
+                        }
+
+                        composable<ProfilScreen> {
+                           ProfilScreen(
+                               onPopUpBackStack = {
+                                   navController.popBackStack()
+                               }
+                           )
+                        }
+                    }
+                }
             }
         }
     }
 }
+
+@Serializable
+object ProfilScreen
+
+@Serializable
+object FirstScreen
 
