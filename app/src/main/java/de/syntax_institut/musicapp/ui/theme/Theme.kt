@@ -11,10 +11,23 @@ import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.toArgb
+
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
+
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.googlefonts.Font
+import androidx.compose.ui.text.googlefonts.GoogleFont
+
+import androidx.compose.ui.unit.sp
 import com.example.ui.theme.AppTypography
+import com.example.ui.theme.bodyFontFamily
 import com.example.ui.theme.displayFontFamily
+import com.example.ui.theme.provider
+import de.syntax_institut.musicapp.R
+
+import java.time.format.TextStyle
 
 private val lightScheme = lightColorScheme(
     primary = primaryLight,
@@ -273,11 +286,13 @@ fun MusicAppTheme(
       else -> lightScheme
   }
 
-  MaterialTheme(
-    colorScheme = colorScheme,
-    typography = AppTypography,
-    content = content
 
-  )
+    MaterialTheme(
+        colorScheme = colorScheme,
+        typography = AppTypography,
+        content = content
+    )
 }
+
+
 
