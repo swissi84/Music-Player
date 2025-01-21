@@ -19,7 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
+
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -27,21 +27,23 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import de.syntax_institut.musicapp.ui.theme.MusicAppTheme
-import kotlinx.serialization.Serializable
+import com.example.compose.MusicAppTheme
+
 
 @Composable
 fun ProfilScreen(
     modifier: Modifier = Modifier,
     onPopUpBackStack: () -> Unit,
+    followerCounter: Int,
+    isFollowing: Boolean,
+    followToggle: (Boolean) -> Unit,
+    
 ) {
-
-    var followers by rememberSaveable { mutableStateOf(245) }
 
     Column(
         modifier = modifier
-            .fillMaxSize()
-            .padding(16.dp),
+            .fillMaxSize(),
+
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Column(
@@ -52,7 +54,6 @@ fun ProfilScreen(
             Button(
                 modifier = Modifier
                     .padding(16.dp),
-
                 onClick = { onPopUpBackStack() },
             ) {
                 Text(text = "Back")
@@ -75,7 +76,7 @@ fun ProfilScreen(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            StatColumn(value = "$followers", label = "Follower")
+            StatColumn(value = "$followerCounter", label = "Follower")
             StatColumn(value = "180", label = "Folgt")
             StatColumn(value = "52", label = "Playlists")
         }
@@ -83,13 +84,14 @@ fun ProfilScreen(
         Spacer(modifier = Modifier.height(16.dp))
 
 
-        Button(onClick = { followers++ }) {
-            Text(text = "Follow")
-        }
+        FollowButton(
+            isFollowing = isFollowing,
+            followToggle = followToggle
+        )
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Lieblingsgenres
+
         Column(
             modifier = Modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
@@ -148,8 +150,17 @@ fun GenreChip(label: String) {
 @Composable
 fun PreviewDJProfileScreen() {
     MusicAppTheme {
+        var followerCounter by remember { mutableStateOf(245) }
+        var isFollowing by remember { mutableStateOf(false) }
+
         ProfilScreen(
-            onPopUpBackStack = {}
+            onPopUpBackStack = {},
+            followerCounter = followerCounter,
+            isFollowing = isFollowing,
+            followToggle = { newFollowingState ->
+                isFollowing = newFollowingState
+                followerCounter += if (newFollowingState) 1 else -1
+            },
         )
     }
 }

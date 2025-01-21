@@ -11,15 +11,16 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.key.Key.Companion.Home
+
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import de.syntax_institut.musicapp.ui.theme.MusicAppTheme
+import com.example.compose.MusicAppTheme
+
 import kotlinx.serialization.Serializable
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -33,7 +34,8 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
 
                     val navController = rememberNavController()
-                    var followers by rememberSaveable { mutableStateOf(245) }
+                    var followerCounter by rememberSaveable { mutableStateOf(245) }
+                    var isFollowing by rememberSaveable { mutableStateOf(false) }
 
                     NavHost(
                         navController = navController,
@@ -53,7 +55,13 @@ class MainActivity : ComponentActivity() {
                            ProfilScreen(
                                onPopUpBackStack = {
                                    navController.popBackStack()
-                               }
+                               },
+                               followerCounter = followerCounter,
+                               isFollowing = isFollowing,
+                               followToggle = { newFollowingState ->
+                                   isFollowing = newFollowingState
+                                   followerCounter += if (newFollowingState) 1 else -1
+                               },
                            )
                         }
                     }

@@ -9,7 +9,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.syntax_institut.musicapp.data.Song
 import de.syntax_institut.musicapp.data.songList
-import de.syntax_institut.musicapp.ui.theme.MusicAppTheme
+import com.example.compose.MusicAppTheme
 
 
 @Composable
