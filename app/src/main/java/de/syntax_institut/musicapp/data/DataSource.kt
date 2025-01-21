@@ -4,22 +4,23 @@ import de.syntax_institut.musicapp.R
 
 
 val songList = listOf(
-    Song("The Beatles", "Hey Jude", 431, R.drawable.user_pic),
-    Song("Queen", "Bohemian Rhapsody", 354, R.drawable.user_pic),
-    Song("Michael Jackson", "Thriller", 357, R.drawable.user_pic),
-    Song("Adele", "Rolling in the Deep", 228, R.drawable.user_pic),
-    Song("The Beatles", "Hey Jude", 431, R.drawable.user_pic),
-    Song("Queen", "Bohemian Rhapsody", 354, R.drawable.user_pic),
-    Song("Michael Jackson", "Thriller", 357, R.drawable.user_pic),
-    Song("Adele", "Rolling in the Deep", 228, R.drawable.user_pic),
-    Song("The Beatles", "Hey Jude", 431, R.drawable.user_pic),
-    Song("Queen", "Bohemian Rhapsody", 354, R.drawable.user_pic),
-    Song("Michael Jackson", "Thriller", 357, R.drawable.user_pic),
-    Song("Adele", "Rolling in the Deep", 228, R.drawable.user_pic),
-    Song("The Beatles", "Hey Jude", 431, R.drawable.user_pic),
-    Song("Queen", "Bohemian Rhapsody", 354, R.drawable.user_pic),
-    Song("Michael Jackson", "Thriller", 357, R.drawable.user_pic),
-    Song("Adele", "Rolling in the Deep", 228, R.drawable.user_pic)
+    Song("The Beatles", "Hey Jude", 431, R.drawable.beatles),
+    Song("Queen", "Bohemian Rhapsody", 354, R.drawable.queen),
+    Song("Michael Jackson", "Thriller", 357, R.drawable.jackson),
+    Song("Adele", "Rolling in the Deep", 228, R.drawable.adele),
+    Song("The Beatles", "Hey Jude", 431, R.drawable.beatles),
+    Song("Queen", "Bohemian Rhapsody", 354, R.drawable.queen),
+    Song("Michael Jackson", "Thriller", 357, R.drawable.jackson),
+    Song("Adele", "Rolling in the Deep", 228, R.drawable.adele),
+    Song("The Beatles", "Hey Jude", 431, R.drawable.beatles),
+    Song("Queen", "Bohemian Rhapsody", 354, R.drawable.queen),
+    Song("Michael Jackson", "Thriller", 357, R.drawable.jackson),
+    Song("Adele", "Rolling in the Deep", 228, R.drawable.adele),
+    Song("The Beatles", "Hey Jude", 431, R.drawable.beatles),
+    Song("Queen", "Bohemian Rhapsody", 354, R.drawable.queen),
+    Song("Michael Jackson", "Thriller", 357, R.drawable.jackson),
+    Song("Adele", "Rolling in the Deep", 228, R.drawable.adele),
+
 )
 
 val Song.formattedLength: String
