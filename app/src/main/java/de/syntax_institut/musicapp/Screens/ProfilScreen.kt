@@ -1,4 +1,4 @@
-package de.syntax_institut.musicapp
+package de.syntax_institut.musicapp.Screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -27,6 +27,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.compose.MusicAppTheme
+import de.syntax_institut.musicapp.Buttons.FollowButton
+import de.syntax_institut.musicapp.R
 
 
 @Composable

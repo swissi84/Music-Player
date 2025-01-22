@@ -1,4 +1,4 @@
-package de.syntax_institut.musicapp
+package de.syntax_institut.musicapp.Main
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -12,6 +12,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -20,6 +21,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import com.example.compose.MusicAppTheme
+import de.syntax_institut.musicapp.Screens.FirstScreen
+import de.syntax_institut.musicapp.Screens.ProfilScreen
+import de.syntax_institut.musicapp.Screens.SongDetailScreen
 import de.syntax_institut.musicapp.data.Song
 import de.syntax_institut.musicapp.data.songList
 import kotlinx.serialization.Serializable
@@ -37,6 +41,7 @@ class MainActivity : ComponentActivity() {
                     val navController = rememberNavController()
                     var followerCounter by rememberSaveable { mutableStateOf(245) }
                     var isFollowing by rememberSaveable { mutableStateOf(false) }
+
 
                     NavHost(
                         navController = navController,
@@ -68,6 +73,7 @@ class MainActivity : ComponentActivity() {
                         composable<SongDetailRoute> {
                             val songDetailRoute = it.toRoute<SongDetailRoute>()
                             Log.d("SongDetailRoute", songDetailRoute.toString())
+                            var isMiniScreen by remember { mutableStateOf(false) }
 
                             SongDetailScreen(
                                 song = Song(
@@ -75,9 +81,11 @@ class MainActivity : ComponentActivity() {
                                     title = songDetailRoute.title,
                                     length = songDetailRoute.length,
                                     image = songDetailRoute.image,
-                                )
-                            )
+                                ),
+                                isMiniScreen = isMiniScreen,
+                                onToggleScreenMode = { isMiniScreen = it } )
                         }
+                         
 
                         composable<ProfilScreen> {
                             ProfilScreen(
@@ -109,7 +117,7 @@ object FirstScreen
 data class SongDetailRoute(
     val artist: String,
     val title: String,
-    val length: Float,
+    val length: Int,
     val image: Int,
 )
 

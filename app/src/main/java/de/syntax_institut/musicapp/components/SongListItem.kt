@@ -44,7 +44,6 @@ fun SongListItem(
                 .fillMaxWidth()
                 .padding(8.dp)
                 .clickable { onClick() },
-
             elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
         ) {
             Row(
