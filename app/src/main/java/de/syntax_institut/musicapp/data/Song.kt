@@ -6,6 +6,5 @@ data class Song(
     val title: String,
     val length: Int,
     val image: Int,
-
-)
+    )
 

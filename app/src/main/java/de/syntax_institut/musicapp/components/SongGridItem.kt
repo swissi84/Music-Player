@@ -2,6 +2,7 @@ package de.syntax_institut.musicapp.components
 
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 
@@ -33,14 +34,19 @@ import com.example.compose.MusicAppTheme
 
 
 @Composable
-fun SongGridItem(song: Song) {
+fun SongGridItem(
+    song: Song,
+    onClick: () -> Unit,
+
+) {
     Card(
         modifier = Modifier
             .fillMaxSize()
-            .padding(8.dp),
+            .padding(8.dp)
+            .clickable { onClick() },
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-
-    ) {
+        )
+    {
         Column(
             modifier = Modifier.padding(8.dp),
             verticalArrangement = Arrangement.Center,
@@ -84,16 +90,4 @@ fun SongGridItem(song: Song) {
     }
 }
 
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun PreviewGridItem() {
-    MusicAppTheme {
-        val sampleSong = Song(
-            artist = "The Beatles",
-            title = "Hey Jude sssssssssss",
-            image = R.drawable.user_pic,
-            length = 432,
-        )
-        SongGridItem(song = sampleSong)
-    }
-}
+

@@ -1,6 +1,7 @@
 package de.syntax_institut.musicapp.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -28,10 +29,11 @@ import de.syntax_institut.musicapp.R
 import de.syntax_institut.musicapp.data.Song
 import de.syntax_institut.musicapp.data.formattedLength
 
-
-
 @Composable
-fun SongListItem(song: Song) {
+fun SongListItem(
+    song: Song,
+    onClick: () -> Unit,
+    ) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -40,7 +42,9 @@ fun SongListItem(song: Song) {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(8.dp),
+                .padding(8.dp)
+                .clickable { onClick() },
+
             elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
         ) {
             Row(
@@ -60,20 +64,9 @@ fun SongListItem(song: Song) {
                 Column {
                     Text(text = song.title, style = MaterialTheme.typography.titleMedium)
                     Text(text = song.artist, style = MaterialTheme.typography.bodyMedium)
-                    Text(text = song.formattedLength, style = MaterialTheme.typography.bodySmall)
+
                 }
             }
         }
-    }
-}
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun PreviewSongItem() {
-    MusicAppTheme {
-        val sampleSongs = listOf(
-            Song("The Beatles", "Hey Jude", 431, R.drawable.user_pic),
-        )
-        val paddingValues = 16.dp
-        SongList(songs = sampleSongs, modifier = Modifier.padding(paddingValues))
     }
 }
