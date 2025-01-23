@@ -1,26 +1,44 @@
 package com.example.compose
 import androidx.compose.ui.graphics.Color
 
-val primaryLight = Color(0xFF365E9D)
-val onPrimaryLight = Color(0xFFFFFFFF)
-val primaryContainerLight = Color(0xFF769CDF)
-val onPrimaryContainerLight = Color(0xFF00326A)
+//Button
+val primaryLight = Color(0xFFD7477A)
+
+//Button Text
+val onPrimaryLight = Color(0xFFFDFDFD)
+
+//Box
+val primaryContainerLight = Color(0xFFFDE359)
+
+//Box Text
+val onPrimaryContainerLight = Color(0xFF000000)
+
+//BottomBar
+val surfaceLight = Color(0xFFFDE359)
+
+//BottomBar Text
+val onSurfaceLight = Color(0xFF000000)
+
+//BottomBar Active
+val secondaryContainerLight = Color(0xFFF3EDED)
+
+
 val secondaryLight = Color(0xFF515F79)
-val onSecondaryLight = Color(0xFFFFFFFF)
-val secondaryContainerLight = Color(0xFFD2E0FF)
+val onSecondaryLight = Color(0xFFFF5722)
+
 val onSecondaryContainerLight = Color(0xFF55637D)
 val tertiaryLight = Color(0xFF455F72)
-val onTertiaryLight = Color(0xFFFFFFFF)
+val onTertiaryLight = Color(0xFF000000)
 val tertiaryContainerLight = Color(0xFF5D788C)
-val onTertiaryContainerLight = Color(0xFFFCFCFF)
+val onTertiaryContainerLight = Color(0xFFE91E63)
 val errorLight = Color(0xFFBA1A1A)
 val onErrorLight = Color(0xFFFFFFFF)
 val errorContainerLight = Color(0xFFFFDAD6)
 val onErrorContainerLight = Color(0xFF93000A)
 val backgroundLight = Color(0xFFD2E0FF)
 val onBackgroundLight = Color(0xFF1A1C20)
-val surfaceLight = Color(0xFFD2E0FF)
-val onSurfaceLight = Color(0xFF1A1C20)
+
+
 val surfaceVariantLight = Color(0xFFDFE2EE)
 val onSurfaceVariantLight = Color(0xFF434750)
 val outlineLight = Color(0xFF737781)
@@ -28,7 +46,7 @@ val outlineVariantLight = Color(0xFFC3C6D2)
 val scrimLight = Color(0xFF000000)
 val inverseSurfaceLight = Color(0xFF2F3035)
 val inverseOnSurfaceLight = Color(0xFFF1F0F6)
-val inversePrimaryLight = Color(0xFFAAC7FF)
+val inversePrimaryLight = Color(0xFF000000)
 val surfaceDimLight = Color(0xFFDAD9DF)
 val surfaceBrightLight = Color(0xFFF9F9FF)
 val surfaceContainerLowestLight = Color(0xFFFFFFFF)

@@ -2,10 +2,15 @@ package de.syntax_institut.musicapp.Screens
 
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -27,7 +32,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.compose.MusicAppTheme
@@ -45,73 +52,64 @@ fun FirstScreen(
     onNavigateToProfilScreen: () -> Unit,
     onNavigateToDetailScreen: (Song) -> Unit,
     modifier: Modifier = Modifier,
-    ) {
+) {
     var isListView by rememberSaveable { mutableStateOf(true) }
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+    ) {
+        Column(
+
+        ) {
+Box {
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(8.dp),
+        horizontalArrangement = Arrangement.SpaceBetween, Alignment.CenterVertically
 
 
-        Scaffold(
-            topBar = {
-                TopAppBar(
+    ) {
+        Text("Song Gallery", style = MaterialTheme.typography.titleLarge)
 
-                    title = { Text("Song Gallery") },
-                    actions = {
-                        IconButton(onClick = { isListView = !isListView }) {
-                            val icon = if (isListView) Icons.Default.GridOn else Icons.Default.List
-                            val description = if (isListView) "Grid View" else "List View"
-                            Icon(
-                                imageVector = icon,
-                                contentDescription = description
-                            )
-                        }
-
-                        IconButton(
-                            modifier = Modifier
-                                .padding(horizontal = 16.dp),
-                            onClick = { onNavigateToProfilScreen() })
-                        {
-                            Icon(
-                                imageVector = Icons.Default.AccountBox,
-                                contentDescription = "ProfilScreen"
-                            )
-                        }
-
+        IconButton(onClick = { isListView = !isListView }) {
+            val icon = if (isListView) Icons.Default.GridOn else Icons.Default.List
+            val description = if (isListView) "Grid View" else "List View"
+            Icon(
+                imageVector = icon,
+                contentDescription = description
+            )
+        }
+    }
+}
+            if (isListView) {
+                LazyColumn {
+                    items(songs) { song ->
+                        SongListItem(
+                            song = song,
+                            onClick = { onNavigateToDetailScreen(song) }
+                        )
                     }
+                }
+            } else {
+                LazyVerticalGrid(
+                    columns = GridCells.Fixed(2),
+                    modifier = Modifier.padding(6.dp),
+                    contentPadding = PaddingValues(4.dp),
                 )
-            }
-        ) { paddingValues ->
-
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(paddingValues)
-            ) {
-                if (isListView) {
-                    LazyColumn {
-                        items(songs) { song ->
-                            SongListItem(
-                                song = song,
-                                onClick = { onNavigateToDetailScreen(song) }
-                            )
-                        }
-                    }
-                } else {
-                    LazyVerticalGrid(
-                        columns = GridCells.Fixed(2),
-                        modifier = Modifier.padding(6.dp),
-                        contentPadding = PaddingValues(4.dp),
-                    )
-                    {
-                        items(songs) { song ->
-                            SongGridItem(
-                                song = song,
-                                onClick = { onNavigateToDetailScreen(song) }
-                            )
-                        }
+                {
+                    items(songs) { song ->
+                        SongGridItem(
+                            song = song,
+                            onClick = { onNavigateToDetailScreen(song) }
+                        )
                     }
                 }
             }
         }
     }
+}
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
@@ -124,3 +122,4 @@ fun MusicAppPreview() {
         )
     }
 }
+
