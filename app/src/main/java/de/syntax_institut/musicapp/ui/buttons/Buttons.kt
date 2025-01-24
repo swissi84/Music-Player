@@ -6,6 +6,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ElevatedButton
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -25,9 +26,9 @@ fun FollowButton(
         onClick = { followToggle(!isFollowing) },
         modifier = Modifier
             .shadow(
-                elevation = 8.dp, // Höhe des Schattens
-                shape = ButtonDefaults.elevatedShape, // Form des Buttons
-                clip = false // Verhindert das Abschneiden des Schattens
+                elevation = 8.dp,
+                shape = ButtonDefaults.elevatedShape,
+                clip = false
             )
 
     ) {
