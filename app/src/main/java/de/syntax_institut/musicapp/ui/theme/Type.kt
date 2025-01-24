@@ -14,14 +14,14 @@ val provider = GoogleFont.Provider(
 
 val bodyFontFamily = FontFamily(
     Font(
-        googleFont = GoogleFont("Kay Pho Du"),
+        googleFont = GoogleFont("Permanent Marker"),
         fontProvider = provider,
     )
 )
 
 val displayFontFamily = FontFamily(
     Font(
-        googleFont = GoogleFont("Kay Pho Du"),
+        googleFont = GoogleFont("Permanent Marker"),
         fontProvider = provider,
     )
 )

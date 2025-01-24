@@ -283,7 +283,7 @@ fun MusicAppTheme(
       }
       
       darkTheme -> darkScheme
-      else -> lightScheme
+      else -> darkScheme
   }
 
 
