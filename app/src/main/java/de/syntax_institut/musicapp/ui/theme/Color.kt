@@ -2,13 +2,13 @@ package com.example.compose
 import androidx.compose.ui.graphics.Color
 
 //Button
-val primaryLight = Color(0xFFD7477A)
+val primaryLight = Color(0xFFFF9800)
 
 //Button Text
-val onPrimaryLight = Color(0xFFFDFDFD)
+val onPrimaryLight = Color(0xFF000000)
 
 //Box
-val primaryContainerLight = Color(0xFFFDE359)
+val primaryContainerLight = Color(0xFFFF9800)
 
 //Box Text
 val onPrimaryContainerLight = Color(0xFF000000)

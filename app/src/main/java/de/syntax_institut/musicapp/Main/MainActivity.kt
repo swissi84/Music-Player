@@ -37,10 +37,10 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import com.example.compose.MusicAppTheme
-import de.syntax_institut.musicapp.Screens.FirstScreen
-import de.syntax_institut.musicapp.Screens.ProfilScreen
-import de.syntax_institut.musicapp.Screens.SearchScreen
-import de.syntax_institut.musicapp.Screens.SongDetailScreen
+import de.syntax_institut.musicapp.ui.Screens.FirstScreen
+import de.syntax_institut.musicapp.ui.Screens.ProfilScreen
+import de.syntax_institut.musicapp.ui.Screens.SearchScreen
+import de.syntax_institut.musicapp.ui.Screens.SongDetailScreen
 import de.syntax_institut.musicapp.data.Song
 import de.syntax_institut.musicapp.data.songList
 import kotlinx.serialization.Serializable
@@ -72,12 +72,9 @@ class MainActivity : ComponentActivity() {
                         }
                     },
                     bottomBar = {
-                        NavigationBar(
-
-                        ) {
+                        NavigationBar {
                             val navBackStackEntry by navController.currentBackStackEntryAsState()
                             val currentDestination = navBackStackEntry?.destination
-
 
                             NavItem.entries.forEachIndexed { index, item ->
                                 NavigationBarItem(

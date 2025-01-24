@@ -1,4 +1,4 @@
-package de.syntax_institut.musicapp.Screens
+package de.syntax_institut.musicapp.ui.Screens
 
 
 import androidx.compose.foundation.background
@@ -39,8 +39,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.compose.MusicAppTheme
 import com.example.compose.backgroundLight
-import de.syntax_institut.musicapp.components.SongGridItem
-import de.syntax_institut.musicapp.components.SongListItem
+import de.syntax_institut.musicapp.ui.components.SongGridItem
+import de.syntax_institut.musicapp.ui.components.SongListItem
 import de.syntax_institut.musicapp.data.Song
 import de.syntax_institut.musicapp.data.songList
 

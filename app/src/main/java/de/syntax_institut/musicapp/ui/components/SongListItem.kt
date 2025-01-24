@@ -1,4 +1,4 @@
-package de.syntax_institut.musicapp.components
+package de.syntax_institut.musicapp.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
