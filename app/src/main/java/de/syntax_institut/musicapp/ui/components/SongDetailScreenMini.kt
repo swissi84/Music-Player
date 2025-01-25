@@ -37,7 +37,8 @@ import de.syntax_institut.musicapp.data.songList
 fun SongDetailScreenMini(
     song: Song,
     modifier: Modifier = Modifier,
-    onExpand: () -> Unit
+    onExpand: () -> Unit,
+    play: () -> Unit,
 ) {
     Box(
         modifier = Modifier
@@ -86,7 +87,7 @@ fun SongDetailScreenMini(
                     Text(song.title, style = MaterialTheme.typography.bodyLarge)
                     Text(song.artist, style = MaterialTheme.typography.bodyMedium)
                 }
-                IconButton(onClick = { }) {
+                IconButton(onClick = { play() }) {
                     Icon(
                         imageVector = Icons.Default.PlayArrow,
                         contentDescription = "Play"
@@ -104,7 +105,7 @@ fun SongDetailScreenMiniPreview() {
         SongDetailScreenMini(
             songList.random(),
             onExpand = {},
-
-            )
+            play = {},
+        )
     }
 }

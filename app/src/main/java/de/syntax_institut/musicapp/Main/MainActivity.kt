@@ -19,16 +19,13 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.lifecycle.ReportFragment.Companion.reportFragment
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
@@ -61,16 +58,6 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier
                     .fillMaxSize(),
 
-                    floatingActionButton = {
-                        FloatingActionButton(
-                            onClick = {
-                                val backstack = navController.currentBackStack.value.map { it.destination.route?.split(",")?.last() }
-                                Log.d("NavBackStack", backstack.toString())
-                            }
-                        ) {
-                            Text("Log")
-                        }
-                    },
                     bottomBar = {
                         NavigationBar {
                             val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -120,6 +107,7 @@ class MainActivity : ComponentActivity() {
                                             title = song.title,
                                             length = song.length,
                                             image = song.image,
+                                            audio = song.audio,
                                         )
                                     )
                                 },
@@ -138,6 +126,7 @@ class MainActivity : ComponentActivity() {
                                     title = songDetailRoute.title,
                                     length = songDetailRoute.length,
                                     image = songDetailRoute.image,
+                                    audio = songDetailRoute.audio,
                                 ),
                                 isMiniScreen = isMiniScreen,
                                 onToggleScreenMode = { isMiniScreen = it } )
@@ -184,6 +173,7 @@ data class SongDetailRoute(
     val title: String,
     val length: Int,
     val image: Int,
+    val audio: Int,
 )
 
 enum class NavItem(
